@@ -1,50 +1,25 @@
-// var FrameScores:number[] =[9,20,35];
-// var frametotal:number[] = [];
+function totalScore(rolls){
+  let score = 0;
+  let frameIndex = 0;
+  for(let frame = 0; frame <10; frame++){
+    
+    const firstThrow = rolls[frameIndex];
+    if(firstThrow === 10){
+      //it is strike
+      score += 10 + rolls[frameIndex + 1] + rolls[frameIndex + 2];
+      frameIndex++;
+    }else{
+      const secondThrow = rolls[frameIndex+1];
+    score += secondThrow + firstThrow;
 
-
-// // function bowlingScores(Scores){
-// //     let totalscores:number = 0;
-// //   for (let i =0; i<FrameScores.length; i++){
-// //     totalscores += FrameScores[i];
-// //     console.log(totalscores);
-// //   }
-  
-// // }
-
-// // bowlingScores(FrameScores);
-
-// function FramesLogic(a:number, b:number){
-//     var total:number = 0;
-//     var sum:number = a+b;
-
-//     if(a == 10){
-//       sum = 10;
-//       FrameScores.push(sum);
-//       FrameScores.push(7);
-//       FrameScores.push(2);
-
-      
-//       FrameScores.forEach((i, index)=>{
-//         total += a[index + 1];
-//         total += a[index + 1];
-
-//         frametotal.push(total);
-
-//         console.log(FrameScores);
-//         console.log(frametotal);
-//         console.log("hello")
-//       })
-
-//     }else{
-//       console.log("not a strike")
-//     }
-// }
-
-
-// FramesLogic(10,0)
-
- function sum(x,y){
-  return x+y;
+    if(firstThrow+secondThrow === 10){
+      score += rolls[frameIndex+2];
+    }
+    }
+    frameIndex = frameIndex+2;
+    
+  }
+  return score;
 }
 
-export default sum;
+export {totalScore};
